@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structured Web Page</title>
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
+    <!-- Include the Alpine library on your page -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <!-- Include the TailwindCSS library on your page -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- Header with Navigation -->
+    <header class="p-4 bg-white shadow-md" x-data="{ open: false }">
+      <div class="container flex items-center mx-auto justify-evenly">
+        <div class="text-xl font-bold">
+          <img src="src/logo.svg" class="md:h-14" alt="" srcset="" />
+        </div>
+        <nav class="hidden space-x-4 md:flex">
+          <a href="#" class="text-gray-700 hover:text-gray-900">Home</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">About</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">Services</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+        </nav>
+        <div>
+          <button
+            class="bg-[#C17A1C] text-white rounded-full text-center w-24 h-9"
+          >
+            Contact us
+          </button>
+        </div>
+        <button
+          @click="open = !open"
+          class="text-gray-700 md:hidden focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div x-show="open" class="mt-2 space-y-2 md:hidden">
+        <a href="#" class="block text-gray-700 hover:text-gray-900">Home</a>
+        <a href="#" class="block text-gray-700 hover:text-gray-900">About</a>
+        <a href="#" class="block text-gray-700 hover:text-gray-900">Services</a>
+        <a href="#" class="block text-gray-700 hover:text-gray-900">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <div
+        class="flex flex-col items-center justify-center px-4 py-10 md:flex-row md:px-12 lg:px-24"
+      >
+        <div class="w-full h-auto p-4 bg-white shadow-md md:h-96">
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="flex flex-col justify-around">
+              <div
+                class="flex flex-col justify-around w-full max-w-xs mx-auto space-y-4"
+              >
+                <div>
+                  <h1
+                    class="max-w-lg text-3xl font-semibold leading-normal text-gray-900 sm:text-left md:text-left dark:text-white"
+                  >
+                    Connectez-vous
+                  </h1>
+
+                  <p
+                    class="text-gray-500 sm:text-left md:text-left dark:text-gray-400"
+                  >
+                    Merci de bien vouloir entrer vos identifiants.
+                  </p>
+                </div>
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  class="w-full h-10 px-3 py-2 text-sm bg-white border rounded-md border-neutral-300 placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                />
+                <input
+                  type="password"
+                  placeholder="Mot de passe"
+                  class="w-full h-10 px-3 py-2 text-sm bg-white border rounded-md border-neutral-300 placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                />
+                <div>
+                  <div
+                    x-data="{ modalOpen: false }"
+                    @keydown.escape.window="modalOpen = false"
+                    class="relative z-50 w-auto h-auto"
+                  >
+                    <span
+                      @click="modalOpen=true"
+                      class="inline-flex items-center justify-center text-sm font-medium transition-colors bg-white rounded-md hover:bg-neutral-100 active:bg-white focus:bg-white disabled:opacity-50"
+                      >Mot de passe oblié ?</span
+                    >
+                    <template x-teleport="body">
+                      <div
+                        x-show="modalOpen"
+                        class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen"
+                        x-cloak
+                      >
+                        <div
+                          x-show="modalOpen"
+                          x-transition:enter="ease-out duration-300"
+                          x-transition:enter-start="opacity-0"
+                          x-transition:enter-end="opacity-100"
+                          x-transition:leave="ease-in duration-300"
+                          x-transition:leave-start="opacity-100"
+                          x-transition:leave-end="opacity-0"
+                          @click="modalOpen=false"
+                          class="absolute inset-0 w-full h-full bg-black bg-opacity-40"
+                        ></div>
+                        <div
+                          x-show="modalOpen"
+                          x-trap.inert.noscroll="modalOpen"
+                          x-transition:enter="ease-out duration-300"
+                          x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                          x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                          x-transition:leave="ease-in duration-200"
+                          x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                          x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                          class="relative w-full py-6 bg-white px-7 sm:max-w-lg sm:rounded-lg"
+                        >
+                          <div class="flex items-center justify-between pb-2">
+                            <h3 class="pl-12 text-lg font-semibold">
+                              Récupération du compte
+                            </h3>
+                            <button
+                              @click="modalOpen=false"
+                              class="absolute top-0 right-0 flex items-center justify-center w-8 h-8 mt-5 mr-5 text-gray-600 rounded-full hover:text-gray-800 hover:bg-gray-50"
+                            >
+                              <svg
+                                class="w-5 h-5"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M6 18L18 6M6 6l12 12"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                          <div
+                            class="relative flex flex-col items-center justify-center w-auto"
+                          >
+                            <div class="">
+                              <form action="">
+                                <input
+                                  type="email"
+                                  placeholder="E-mail"
+                                  class="flex items-center justify-center h-10 px-3 py-2 mb-4 text-sm bg-white border rounded-md w-80 border-neutral-300 placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+                                />
+                                <button
+                                  type="button"
+                                  class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium tracking-wide text-white transition-colors duration-200 rounded-md sm:w-64 md:w-80 bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none"
+                                >
+                                  Envoyer
+                                </button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium tracking-wide text-white transition-colors duration-200 rounded-md sm:w-64 md:w-80 bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none"
+                >
+                  Se connecter
+                </button>
+
+                <span
+                  >J'ai pas de compte ?
+                  <a
+                    href=""
+                    class="text-gray-500 whitespace-normal dark:text-gray-400"
+                    >S'inscrir</a
+                  ></span
+                >
+              </div>
+            </div>
+            <div class="rounded-md bg-slate-200">
+              <img
+                src="src/background_allege.png"
+                class="object-cover w-full rounded-lg h-80"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-4 mt-auto bg-blue-100">
+      <div class="container mx-auto text-center">
+        <p class="text-gray-700">
+          &copy; 2024 Your Company. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

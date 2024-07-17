@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structured Web Page</title>
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
+    <!-- Include the Alpine library on your page -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <!-- Include the TailwindCSS library on your page -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- Header with Navigation -->
+    <header class="p-4 bg-white shadow-md" x-data="{ open: false }">
+      <div class="container flex items-center mx-auto justify-evenly">
+        <div class="text-xl font-bold">
+          <img src="src/logo.svg" class="md:h-14" alt="" srcset="" />
+        </div>
+        <nav class="hidden space-x-4 md:flex">
+          <a href="#" class="text-gray-700 hover:text-gray-900">Home</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">About</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">Services</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+          <a href="#" class="text-gray-700 hover:text-gray-900">Contact</a>
+        </nav>
+        <div>
+          <button
+            class="bg-[#C17A1C] text-white rounded-full text-center w-24 h-9"
+          >
+            <a href="login.html"> Contact us </a>
+          </button>
+        </div>
+        <button
+          @click="open = !open"
+          class="text-gray-700 md:hidden focus:outline-none"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+      </div>
+      <div x-show="open" class="mt-2 space-y-2 md:hidden">
+        <a href="#" class="block text-gray-700 hover:text-gray-900">Home</a>
+        <a href="#" class="block text-gray-700 hover:text-gray-900">About</a>
+        <a href="#" class="block text-gray-700 hover:text-gray-900">Services</a>
+        <a href="#" class="block text-gray-700 hover:text-gray-900">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <div
+        class="flex flex-col items-center justify-center px-8 py-10 md:flex-row md:px-24 lg:px-48"
+      >
+        <div
+          class="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2"
+        >
+          <div class="flex flex-col w-full h-auto md:h-52">
+            <h1 class="text-3xl font-bold text-black">Manage your</h1>
+            <h1 class="text-[#C17A1C] font-bold text-3xl">Property</h1>
+            <p class="py-2 text-justify text-pretty">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia,
+              libero. Minima eius maxime excepturi veniam voluptatibus itaque
+              doloribus? Eaque det aperiam soluta voluptatibus ducimus neque
+              illo harum?
+            </p>
+            <div class="relative flex items-center py-3">
+              <input
+                type="text"
+                class="w-full h-10 pl-4 border-2 border-gray-300 rounded-l-full md:w-40"
+                placeholder="Type here"
+              />
+              <button
+                class="bg-[#C17A1C] rounded-r-full w-full md:w-32 h-10 text-white flex items-center justify-center"
+              >
+                Get our quota
+              </button>
+            </div>
+          </div>
+          <div class="flex flex-col w-full h-auto md:h-52">
+            <div class="relative">
+              <div>
+                <img
+                  src="ap1.jpg"
+                  class="w-full md:w-auto md:absolute rounded-tl-2xl rounded-tr-2xl"
+                  alt=""
+                />
+                <div>
+                  <img
+                    src="ap3.jpg"
+                    class="absolute w-full h-32 rounded-lg md:w-44 bottom-1 md:top-28 md:left-80"
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <img
+                    src="ap2.jpg"
+                    class="absolute left-0 w-full h-20 rounded-lg md:w-32 top-64 md:left-72"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-4 mt-auto bg-blue-100">
+      <div class="container mx-auto text-center">
+        <p class="text-gray-700">
+          &copy; 2024 Your Company. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
